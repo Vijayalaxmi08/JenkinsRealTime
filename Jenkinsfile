@@ -21,12 +21,7 @@ pipeline {
     }
 
     stage('Test-Automation') {
-      post {
-        success {
-          emailext(body: 'API and UI Automation Scripts are successful', subject: 'All Automated Tests Are Successful', to: 'vijayalaxmi.thilaga@gmail.com; vijayalakshmi.thilaga@gmail.com')
-        }
-
-      }
+      
       parallel {
         stage('QA-UI-Automation') {
           agent{
