@@ -19,7 +19,7 @@ pipeline {
       }
     }
 
-    stage('QA-UI-Automation') {
+    stage('Test Automation') {
       parallel {
         stage('QA-UI-Automation') {
           steps {
