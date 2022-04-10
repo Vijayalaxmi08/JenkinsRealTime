@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Dev-Build') {
       steps {
+        tool(name: 'maven', type: 'Maven')
         git 'https://github.com/Vijayalaxmi08/WebApp.git'
         script {
           try{
