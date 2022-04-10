@@ -4,13 +4,21 @@ pipeline {
     stage('Dev-Build') {
       steps {
         git 'https://github.com/Vijayalaxmi08/WebApp.git'
-        retry(count: 2) {
-          bat 'bat "start /min stopApp.bat"'
-        }
-
-        bat 'bat "mvn install"'
-        bat 'bat "set JENKINS_NODE_COOKIE=dontKillMe && start /min startApp.bat"'
-      }
+				script{
+					try{
+						retry(2){
+							bat "start /min stopApp.bat"
+					  }	
+					}catch(Exception e){
+						echo 'There is no app running in port 9002'
+					}
+				}
+				//maven build for QA
+				bat "mvn install"
+				
+				//Start the server
+				bat "set JENKINS_NODE_COOKIE=dontKillMe && start /min startApp.bat"	
+       }
     }
 
     stage('QA-UI-Automation') {
