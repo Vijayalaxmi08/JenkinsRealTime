@@ -1,11 +1,8 @@
 pipeline {
   agent any
-  tools {
-        maven "Maven"
-    }
   stages {
     stage('Dev-Build') {
-      steps {        
+      steps {
         git 'https://github.com/Vijayalaxmi08/WebApp.git'
         script {
           try{
@@ -34,9 +31,6 @@ pipeline {
 
         stage('QA-API-Automation') {
           agent any
-          environment {
-            recipientProviders = 'emailext body: \'API and UI Automation Scripts are successful\', subject: \'All Automated Tests Are Successful\', to: \'vijayalaxmi.thilaga@gmail.com; vijayalakshmi.thilaga@gmail.com\''
-          }
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppApiAutomation.git'
             sleep 10
@@ -48,5 +42,8 @@ pipeline {
       }
     }
 
+  }
+  tools {
+    maven 'Maven'
   }
 }
