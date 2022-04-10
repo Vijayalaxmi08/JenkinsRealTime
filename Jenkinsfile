@@ -26,13 +26,7 @@ pipeline {
 			parallel{
 				
 				stage('QA-UI-Automation'){
-					agent{
-						label{
-							label ''
-							customWorkspace 'workspace/WebAppUiAutomation'
-						}
-					}
-		
+							
 					steps{
 						//Pull Latest code from github repo
 						git 'https://github.com/Vijayalaxmi08/WebAppUiAutomation.git'
@@ -46,13 +40,7 @@ pipeline {
 				}
 		
 				stage('QA-API-Automation'){
-					agent{
-						label{
-							label ''
-							customWorkspace 'workspace/WebAppAPIAutomation'
-						}
-					}
-				
+									
 					steps{
 						//Pull Latest code from github repo
 						git 'https://github.com/Vijayalaxmi08/WebAppApiAutomation.git'
