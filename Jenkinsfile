@@ -23,7 +23,6 @@ pipeline {
     stage('Test-Automation') {
       parallel {
         stage('QA - UI - Automation') {
-          agent any
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppUiAutomation.git'
             sleep 10
@@ -32,7 +31,6 @@ pipeline {
         }
 
         stage('QA-API-Automation') {
-          agent any
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppApiAutomation.git'
             sleep 10
