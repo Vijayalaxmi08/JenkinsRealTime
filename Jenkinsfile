@@ -1,9 +1,11 @@
 pipeline {
   agent any
+  tools {
+        maven "Maven"
+    }
   stages {
     stage('Dev-Build') {
-      steps {
-        tool(name: 'maven', type: 'Maven')
+      steps {        
         git 'https://github.com/Vijayalaxmi08/WebApp.git'
         script {
           try{
