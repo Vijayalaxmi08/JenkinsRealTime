@@ -29,12 +29,12 @@ pipeline {
       }
       parallel {
         stage('QA-UI-Automation') {
-          agent {
-            node {
-              label 'customWorkspace \'workspace/WebAppUiAutomation\''
-            }
-
-          }
+          agent{
+						label{
+							label ''
+							customWorkspace 'workspace/WebAppUIAutomation'
+						}
+					}
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppUiAutomation.git'
             sleep(time: 10, unit: 'SECONDS')
@@ -44,6 +44,12 @@ pipeline {
 
         stage('QA-API-Automation') {
           steps {
+            agent{
+						label{
+							label ''
+							customWorkspace 'workspace/WebAppAPIAutomation'
+						}
+					}
             git 'https://github.com/Vijayalaxmi08/WebAppApiAutomation.git'
             sleep(time: 10, unit: 'SECONDS')
             bat 'mvn test'
