@@ -43,7 +43,5 @@ pipeline {
     }
 
   }
-  tools {
-    maven 'Maven'
-  }
+  
 }
