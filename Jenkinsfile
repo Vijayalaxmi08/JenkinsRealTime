@@ -37,7 +37,7 @@ pipeline {
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppApiAutomation.git'
             sleep 10
-            bat 'bat \'mvn test\''
+            bat 'mvn test'
             emailext(subject: 'Pipeline - UI and API Automation', body: 'All UI and API Automation API ran successfully', attachLog: true, from: 'vijayalaxmi.jenkins@gmail.com', to: 'vijayalaxmi.thilaga@gmail.com')
           }
         }
