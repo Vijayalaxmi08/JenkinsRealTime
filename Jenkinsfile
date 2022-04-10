@@ -2,6 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Dev-Build') {
+      agent any
       steps {
         git 'https://github.com/Vijayalaxmi08/WebApp.git'
         script {
@@ -13,6 +14,7 @@ pipeline {
             echo 'There is no app running in port 9002'
           }
         }
+
         bat 'mvn install'
         bat 'set JENKINS_NODE_COOKIE=dontKillMe && start /min startApp.bat'
       }
@@ -21,6 +23,7 @@ pipeline {
     stage('Test-Automation') {
       parallel {
         stage('QA - UI - Automation') {
+          agent any
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppUiAutomation.git'
             sleep 10
@@ -29,6 +32,7 @@ pipeline {
         }
 
         stage('QA-API-Automation') {
+          agent any
           steps {
             git 'https://github.com/Vijayalaxmi08/WebAppApiAutomation.git'
             sleep 10
